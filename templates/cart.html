@@ -1,0 +1,102 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    {{products.metadescription|truncatewords:155}}
+{% endblock%}
+{% block title %}
+    {{products.name}}
+{% endblock %}
+
+{% block content%}
+{% if not cart_items%}
+    <div>
+        <div class="text-centre">
+            <h2 class="text-centre cart-title">Your Shopping Cart is Empty</h2>
+            <p class="text-centre"><a href="{% url 'shop:allProdCat' %}">continue shopping</a></p>
+        </div>
+    </div>
+{% else %}
+    <div>
+        <div class="text-centre"> 
+            <br>
+            <h1 class="text-centre">yOur cart</h1>
+            <br>
+        </div>
+    </div>
+    <div class="row mx-auto">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+            <table class="table table-hover" id="cart-table">
+                <thead class="cart-table-head">
+                  <tr>
+                    <th scope="col"></th>
+                      <th scope="col">Product Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                   {% for item in cart_items %}
+                       <tr>
+                            <td>
+                                <a href="{{item.product.get_absolute_url}}"><img src="{{item.product.image.url}}" alt="product image" class="float-left rounded" width="150px"></a>
+                            </td>
+                            <td class="text-left">
+                                {{item.product.name}}
+                                <br>
+                                sku:{{item.product.id}}
+                                <br>
+                                price:{{item.product.price}}
+                                <br>
+                                quantity:{{item.quantity}}
+                            </td>
+                            <td>
+                                {{item.sub_total}}
+                            </td>
+                            {% if item.quantity < item.product.stock %}
+                            <td>
+                                <a href="{% url 'cartapp:add_cart' item.product.id %}" class="custom-a"><i class="fa-solid fa-plus"></i></a>
+                                <a href="{% url 'cartapp:cart_remove' item.product.id %}" class="custom-a"><i class="fa-solid fa-minus"></i></a>
+                                <a href="{% url 'cartapp:full_remove' item.product.id %}" class="custom-icon"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                            {% else %}
+                            <td>
+                               
+                                &nbsp;<a href="{% url 'cartapp:cart_remove' item.product.id %}" class="custom-a"><i class="fa-solid fa-minus"></i></a>
+                                &nbsp;<a href="{% url 'cartapp:full_remove' item.product.id %}" class="custom-icon"><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-centre">
+            <table class="table cart-table">
+                <thead class="cart-table-head">
+                    <tr>
+                        <th>
+                            checkout
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            Review your items before checkout
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="text-left">
+                            payable amount :<strong>{{total}}</strong>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="mx-auto">
+                <a href="{% url 'shop:allProdCat' %}" class="btn btn-secondary btn-block cart-button">continue shopping</a>
+
+            </div>
+
+        </div>
+
+    </div>
+    {% endif %}
+{% endblock %}

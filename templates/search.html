@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+    {{products.metadescription|truncatewords:155}}
+{% endblock%}
+{% block title %}
+    {{productss.name}}
+{% endblock %}
+
+{% block content%}
+<div class="text-center search-text">
+    <p>searched for {{query}} </p>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                {% for p in products%}
+                <div class="col-md-3">
+                    <div class="card text-center" style="min-width: 18rem;" id="card">
+                        <div class="card-body" id="items" >
+                            <a href="{{p.get_url}}"><img class="card-img-top" src="{{p.image.url}} " height="200px" width="200px" alt="{{p.name}} "></a>
+                            <h5 class="card-title">{{p.name}}</h5>
+                            <h6>{{p.price}}</h6>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="row mx-auto">
+                        <p class="text-center search-text">no result</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+ 
+{% endblock %}

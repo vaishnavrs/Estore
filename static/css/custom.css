@@ -1,0 +1,125 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+
+.nav-item{
+    letter-spacing: 0.1em;
+    font-size: 12px;
+    text-transform: uppercase;
+
+}
+
+.dropdown-item{
+    letter-spacing: 0.1em;
+    font-size: 12px;
+    text-transform: uppercase;
+
+}
+
+.my-footer{
+    background:#e2e3e5;
+  
+}
+.my-footer p{
+    font-size: 14px;
+    padding-top: 20px;
+}
+
+/* category page */
+.row-class{
+    padding-top: 15px;
+}
+
+.row-class .mx-auto{
+    color: black;
+    font-size: 12px;
+}
+
+
+.my-title{
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+
+}
+
+#items{
+    font-size: 5px;
+    color:black;   
+}
+
+#card{
+    margin-bottom: 10px;
+    width: 300px;
+}
+.card-body h5{
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+}
+
+
+/* product page */
+.product-row{
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+.product-title{
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    padding-top: 15px;
+    padding-bottom: 10px;
+
+}
+.product-description{
+    padding-right: 20px;
+
+}
+
+/* navbar */
+.search-field{
+    margin-left: 230px;
+    padding-right: 10px;
+    width: 400px;
+
+}
+
+/* searc bar */
+.search-text{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+}
+
+/* cart table */
+.cart-table{
+    min-width: 400px;
+    font-size: 14px;
+}
+cart-table-head{
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    background-color: #f8f9fa !important;
+}
+
+.custom-a{
+    text-decoration: none;
+}
+.custom-icon{
+    text-decoration: none;
+    color:#868e96 !important;
+
+}
+.cart-button{
+    margin-top: 5px;
+}
+#custom-image{
+    width: 100px;
+    height: 100px;
+}
+
+
+
